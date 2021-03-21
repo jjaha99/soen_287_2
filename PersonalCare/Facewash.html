@@ -1,15 +1,21 @@
+<!--
+    I had some isue with the css so I need it to do some little modification.
+-->
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="Title" content="Personal Care">
-        <meta name="Author" content="Samdarshi Tiwari">
-        <meta name="Keyword" content="Supermarket, Personal Care">
+        <meta name="Title" content="Dairy and eggs">
+        <meta name="Author" content="Manuel Beir-Alarcon">
+        <meta name="Keyword" content="Supermarket, eggs">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Personal Care</title>
+        <title>Facewash</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
             integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/e30f0a536e.js" crossorigin="anonymous"></script>   
 
             <style>
@@ -22,7 +28,7 @@
               }
 
               a{
-                  text-decoration: none;
+                  text-decoration: none !important;
               }
               nav{
                   background: #000000;
@@ -130,7 +136,7 @@
                   font-size: 15px;
               }
 
-              .show,input,.icon{
+              .show,.icon{
                   display: none;
               }
 
@@ -182,7 +188,7 @@
                       display: block;
                       color: white;
                       position:absolute;
-                      margin-top: 0px ;
+                      margin-top: 21px ;
                       right: 40px;
                       line-height: 70px;
                       font-size: 25px;
@@ -276,13 +282,13 @@
         <label for="btn" class="icon">
             <span class="fa fa-bars"></span>
         </label>
-        <input type="checkbox" id="btn">
+        <input style="display: none;" type="checkbox" id="btn">
         <ul>
             <li><a href = "#", style="color: azure;">Home</a></li>
             <li>
                 <label for ="btn-1" class="show">Aisle +</label>
                 <a href="#", style="color: azure;">Aisle</a>
-                <input type="checkbox" id="btn-1" style="text-decoration: none;">
+                <input type="checkbox" id="btn-1" style="text-decoration: none; display: none;">
                 <ul>
                     <li><a href="#", style="color: azure;">Fruits & Vegetables</a></li>
                     <li><a href="#", style="color: azure;">Seafood</a></li>
@@ -301,31 +307,37 @@
     </nav>
 
     <div  aria-label="breadcrumb" class="bg-ligth pb-1">
-          <ol class="d-flex justify-content-center breadcrumb">
-            <li class="text-black breadcrumb-item"><a href="/">Home</a></li>
-            <li class="text-black breadcrumb-item"><a href="Personal-Care.html">Personal Care</a></li>
-            <li class="text-black breadcrumb-item active">Facewash</li>
-          </ol>
-    </div>
+        <ol class="d-flex justify-content-center breadcrumb">
+          <li class="text-black breadcrumb-item"><a href="/">Home</a></li>
+          <li class="text-black breadcrumb-item"><a href="Personal-Care.html">Personal Care</a></li>
+          <li class="text-black breadcrumb-item active">Facewash</li>
+        </ol>
+  </div>
 
         <div class="container">
           <div class="row">
               <div class="col-12 col-md-4 pb-2">
                   <div class="card d-flex justify-content-center">
-                      <img style="object-fit: cover;" src="facewash.png">
+                      <img style="object-fit: cover;" src="facewash.png"/>
                   </div>
               </div>
               <div class="col-12 col-md-8 pb-2">
                   <div class="card p-3">
-                      <h4>Herbal Facewash</h4>
-                      <h4 class="text-success">$9.99</h4>
+                    <h4>Herbal Facewash</h4>
+                    <h4 class="text-success">$9.99</h4>
+                    <h5>Quantity</h5>  
+                        
                       <div class="btn-group" style="width: max-content; height: max-content;">
-                        <input type="number" class="px-3 py-2" min="1" max="999" value="0" aria-label="Product quantatity" />
+                        <input onclick="subtotal()" id="quantity" type="number" class="px-3 py-2" min="1" max="999" value="0" aria-label="Product quantatity" />
                       </div><br />
-                      <p> Herbal formulation that cleans impurities and helps to clear out pimples.<br>
-                          The natural blend of Neem and Turmeric brings together their anti-bacterial<br>
-                          and anti-fungal properties to prevent the recurrence of acne over time.<br>
-                        Content: 300ml</p>
+                      <p id="subPrice" style="display: none;"></p>
+
+                      <h4>Product Details</h4>
+                      <p> 
+                        Herbal formulation that cleans impurities and helps to clear out pimples.<br>
+                        The natural blend of Neem and Turmeric brings together their anti-bacterial<br>
+                        and anti-fungal properties to prevent the recurrence of acne over time.<br>
+                      Content: 300ml</p>
                       <button class="btn btn-info" onclick="location.href = '/cart';"><i class="bi bi-cart-plus">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
                           <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
@@ -346,7 +358,7 @@
           <footer class="footer-bs">
               <div class="row ">
                   <div class="col-md-3 footer-brand animated fadeInLeft">
-                      <div class="card" style="width: 12rem; margin-left:-14px; margin-bottom: 5px; border: none; background: transparent;">
+                      <div class="card" style="width: 12rem; margin-bottom: 5px; border: none;">
                           <img class="card-img-top" src="Screenshot__452_-removebg-preview.png" alt="Card image cap">
                       </div>
                       <p>
@@ -409,4 +421,25 @@
       </div>
         
     </body>
+
+    <script>
+        
+
+        function subtotal(){
+            var price = 9.99;
+            var quantity = document.getElementById("quantity").value;
+            var total = price * quantity;
+            var subtotal = document.getElementById("subPrice");
+            total = total.toFixed(2);
+            subtotal.innerHTML = "The subtotal is $" + total;
+
+            if(subtotal.innerHTML.length === 0){
+                subtotal.style.display = "none";
+            }else{
+                subtotal.style.display = "block"
+            }
+            
+            
+        }
+    </script>
 </html>
