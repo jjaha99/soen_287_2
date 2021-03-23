@@ -1,0 +1,9 @@
+{
+    "fullname" : "fullname",
+    "address" : "address",
+    "postalcode" : "postalcode",
+    "country" : "country",
+    "email" : "email",
+    "password" : "password",
+    "confirmpassword" : "confirmpassword"
+}
