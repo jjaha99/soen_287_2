@@ -133,7 +133,7 @@
                   font-size: 15px;
               }
 
-              .show,input,.icon{
+              .show,.icon{
                   display: none;
               }
 
@@ -279,13 +279,13 @@
         <label for="btn" class="icon">
             <span class="fa fa-bars"></span>
         </label>
-        <input type="checkbox" id="btn">
+        <input style="display: none;" type="checkbox" id="btn">
         <ul>
             <li><a href = "#", style="color: azure;">Home</a></li>
             <li>
                 <label for ="btn-1" class="show">Aisle +</label>
                 <a href="#", style="color: azure;">Aisle</a>
-                <input type="checkbox" id="btn-1" style="text-decoration: none;">
+                <input type="checkbox" id="btn-1" style="text-decoration: none; display: none;">
                 <ul>
                     <li><a href="#", style="color: azure;">Fruits & Vegetables</a></li>
                     <li><a href="#", style="color: azure;">Seafood</a></li>
@@ -327,6 +327,10 @@
                         <input type="number" class="px-3 py-2" min="1" max="999" value="0" aria-label="Product quantatity" />
                       </div><br />
                       <p>Satisfy your snack craving with the irresistible taste of original flavor potato crisps; uniquely shaped and salted from edge to edge for a perfectly flavored bite every time. Make snack time more fun with the original, stackable potato crisp; pop open a can and experience the classic flavor and satisfying crunch of Original Flavored Potato Crisps. Always tasty, never greasy; a delicious and crispy way to put the wow in your snacking routine; a travel-ready food made to enjoy at home or on-the-go; no artificial ingredients or preservatives. Grab a can at game time, pack a snack for school, enjoy a stack at the office and stow them in lunchboxes; the savory, stackable snack options are endless. Convenient ready-to-eat potato crisps, stacked in a 5.2 ounce can; Kosher OU Pareve; packaged for freshness and great taste.</p>
+                      <div class="btn-group" style="width: max-content; height: max-content;">
+                        <input onclick="subtotal()" id="quantity" type="number" class="px-3 py-2" min="1" max="999" value="0" aria-label="Product quantatity" />
+                      </div><br />
+                      <p id="subPrice" style="display: none;"></p>
                       <button class="btn btn-info" onclick="location.href = '/cart';"><i class="bi bi-cart-plus">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
                           <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
@@ -410,4 +414,33 @@
       </div>
         
     </body>
+
+    <script>
+        function funcClick(){
+            var x = document.getElementById("discription");
+            if(x.style.display === "block"){
+                x.style.display = "none";
+            }else{
+                x.style.display = "block"
+            }
+        }
+
+        function subtotal(){
+            var price = 1.47;
+            var quantity = document.getElementById("quantity").value;
+            var total = price * quantity;
+            var subtotal = document.getElementById("subPrice");
+            total = total.toFixed(2);
+            subtotal.innerHTML = "The subtotal is $" + total;
+
+            if(subtotal.innerHTML.length === 0){
+                subtotal.style.display = "none";
+            }else{
+                subtotal.style.display = "block"
+            }
+
+
+        }
+    </script>
+
 </html>
